@@ -1,70 +1,133 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Michael Kawa</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
 <style>
-:root{--ink:#08090C;--card:#101319;--line:#1E232C;--dim:#8A9199;--txt:#EDEFF2;--gold:#C9A227}
-*{box-sizing:border-box}
-body{margin:0;background:var(--ink);color:var(--txt);
-font:17px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
--webkit-font-smoothing:antialiased;padding:0 22px 56px}
-.w{max-width:520px;margin:0 auto}
-header{padding:46px 0 8px;text-align:center}
-.eyebrow{font:600 11px ui-monospace,Menlo,monospace;letter-spacing:.24em;
-text-transform:uppercase;color:var(--gold);margin-bottom:16px}
-h1{margin:0;font-size:clamp(29px,8.2vw,39px);line-height:1.08;letter-spacing:-.03em;font-weight:800}
-.tag{margin:14px 0 0;color:var(--dim);font-size:16px;line-height:1.5}
+:root{
+  --bg:#07080B; --bg2:#0B0D12; --card:#0F1218; --line:#1C212B; --line2:#272E3A;
+  --dim:#89909B; --dim2:#5C636E; --txt:#F0F2F5; --gold:#D4A72C; --gold2:#F2C94C;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--txt);
+ font:17px/1.55 -apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",sans-serif;
+ -webkit-font-smoothing:antialiased;padding:0 20px 64px;overflow-x:hidden}
+.w{max-width:540px;margin:0 auto}
+
+/* ambient glow behind the fold */
+body:before{content:"";position:fixed;inset:-30% 0 auto;height:70vh;pointer-events:none;
+ background:radial-gradient(60% 50% at 50% 0%,rgba(212,167,44,.10),transparent 70%);z-index:0}
+.w{position:relative;z-index:1}
+
+@keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.r{animation:rise .7s cubic-bezier(.16,.84,.44,1) both}
+.r2{animation-delay:.09s}.r3{animation-delay:.18s}.r4{animation-delay:.27s}.r5{animation-delay:.36s}
+@media (prefers-reduced-motion:reduce){.r{animation:none}}
+
+header{padding:64px 0 0;text-align:center}
+.mark{display:inline-flex;align-items:center;gap:9px;padding:7px 14px;border-radius:100px;
+ background:rgba(212,167,44,.09);border:1px solid rgba(212,167,44,.22);margin-bottom:26px}
+.dot{width:6px;height:6px;border-radius:50%;background:var(--gold2);
+ box-shadow:0 0 10px var(--gold2);animation:pulse 2.6s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
+.mark span{font:600 10.5px ui-monospace,"SF Mono",Menlo,monospace;letter-spacing:.19em;
+ text-transform:uppercase;color:var(--gold2)}
+
+h1{margin:0;font-size:clamp(32px,9vw,44px);line-height:1.04;letter-spacing:-.035em;font-weight:800}
+h1 em{font-style:normal;background:linear-gradient(100deg,var(--gold2),#E8B93F 55%,#B98F1E);
+ -webkit-background-clip:text;background-clip:text;color:transparent}
+.tag{margin:20px auto 0;color:var(--dim);font-size:16.5px;max-width:34ch;line-height:1.55}
 .tag b{color:var(--txt);font-weight:600}
-.hero{margin:32px 0 0;background:linear-gradient(160deg,#141821,#0E1116);
-border:1px solid #262C37;border-radius:12px;padding:26px 22px 22px}
-.hero .k{font:600 11px ui-monospace,Menlo,monospace;letter-spacing:.2em;
-text-transform:uppercase;color:var(--gold)}
-.hero h2{margin:11px 0 0;font-size:25px;line-height:1.18;letter-spacing:-.02em;font-weight:750}
-.hero p{margin:12px 0 0;color:var(--dim);font-size:15.5px;line-height:1.55}
-a.cta{display:block;margin:20px 0 0;background:var(--gold);color:#0A0C10;
-text-align:center;text-decoration:none;font-weight:700;font-size:17px;
-padding:16px;border-radius:9px}
-a.cta:active{transform:scale(.985)}
-.micro{margin:11px 0 0;text-align:center;color:#666D75;font-size:12.5px}
-.or{display:flex;align-items:center;gap:14px;margin:34px 0 18px;
-color:#5A616A;font:600 10.5px ui-monospace,Menlo,monospace;letter-spacing:.2em;text-transform:uppercase}
-.or:before,.or:after{content:"";flex:1;height:1px;background:var(--line)}
-a.row{display:flex;align-items:center;gap:14px;text-decoration:none;color:inherit;
-background:var(--card);border:1px solid var(--line);border-radius:10px;
-padding:16px 17px;margin-bottom:10px}
-a.row:active{transform:scale(.99)}
-.row .ic{font-size:21px;line-height:1;flex-shrink:0;width:26px;text-align:center}
-.row h3{margin:0;font-size:16px;font-weight:650;letter-spacing:-.01em}
-.row p{margin:3px 0 0;color:var(--dim);font-size:13.5px;line-height:1.45}
-.row .ar{margin-left:auto;color:#4C535C;font-size:19px;flex-shrink:0}
-footer{margin-top:38px;padding-top:20px;border-top:1px solid var(--line);
-color:#666D75;font-size:12.5px;line-height:1.65;text-align:center}
+
+/* the gap, drawn */
+.gap{margin:36px 0 0;background:linear-gradient(180deg,#0E1117,#0A0C11);
+ border:1px solid var(--line);border-radius:14px;padding:20px 20px 18px}
+.gaplbl{font:600 10px ui-monospace,Menlo,monospace;letter-spacing:.2em;text-transform:uppercase;color:var(--dim2)}
+.bar{display:flex;height:52px;margin:14px 0 0;border-radius:6px;overflow:hidden}
+.paid{flex:0 0 43%;background:#161B23;border:1px solid var(--line2);border-right:none;border-radius:6px 0 0 6px}
+.spread{flex:1;border:1px solid rgba(212,167,44,.5);border-left:none;border-radius:0 6px 6px 0;
+ background:linear-gradient(180deg,rgba(212,167,44,.30),rgba(212,167,44,.07));
+ animation:grow 1.3s cubic-bezier(.16,.84,.44,1) .4s both;transform-origin:left}
+@keyframes grow{from{transform:scaleX(.02)}to{transform:scaleX(1)}}
+.barlbl{display:flex;justify-content:space-between;margin-top:10px;
+ font:600 11px ui-monospace,Menlo,monospace;letter-spacing:.08em;text-transform:uppercase}
+.barlbl .a{color:var(--dim2)}.barlbl .b{color:var(--gold2)}
+
+/* primary offer */
+.hero{margin:34px 0 0;position:relative;border-radius:16px;padding:1px;
+ background:linear-gradient(150deg,rgba(212,167,44,.5),rgba(212,167,44,.08) 45%,var(--line))}
+.hero-in{background:linear-gradient(160deg,#12161E,#0B0E13);border-radius:15px;padding:28px 24px 24px}
+.k{font:600 10.5px ui-monospace,Menlo,monospace;letter-spacing:.19em;text-transform:uppercase;color:var(--gold2)}
+.hero h2{margin:13px 0 0;font-size:26px;line-height:1.16;letter-spacing:-.025em;font-weight:750}
+.hero p{margin:14px 0 0;color:var(--dim);font-size:15.5px;line-height:1.58}
+.hero p b{color:var(--txt);font-weight:600}
+a.cta{display:block;margin:22px 0 0;padding:17px;border-radius:11px;text-decoration:none;
+ text-align:center;font-weight:700;font-size:17px;color:#0A0C10;
+ background:linear-gradient(180deg,var(--gold2),var(--gold));
+ box-shadow:0 6px 22px -8px rgba(212,167,44,.7);transition:transform .15s,box-shadow .15s}
+a.cta:hover{transform:translateY(-2px);box-shadow:0 10px 28px -8px rgba(212,167,44,.85)}
+a.cta:active{transform:translateY(0) scale(.99)}
+.micro{margin:12px 0 0;text-align:center;color:var(--dim2);font-size:12.5px}
+
+.or{display:flex;align-items:center;gap:16px;margin:38px 0 16px;color:var(--dim2);
+ font:600 10px ui-monospace,Menlo,monospace;letter-spacing:.2em;text-transform:uppercase}
+.or:before,.or:after{content:"";flex:1;height:1px;
+ background:linear-gradient(90deg,transparent,var(--line2),transparent)}
+
+a.row{display:flex;align-items:center;gap:15px;text-decoration:none;color:inherit;
+ background:var(--card);border:1px solid var(--line);border-radius:12px;
+ padding:17px 18px;margin-bottom:10px;position:relative;overflow:hidden;
+ transition:border-color .18s,transform .18s,background .18s}
+a.row:before{content:"";position:absolute;left:0;top:0;bottom:0;width:2px;background:var(--gold);
+ transform:scaleY(0);transform-origin:center;transition:transform .22s}
+a.row:hover{border-color:var(--line2);transform:translateY(-2px);background:#12161D}
+a.row:hover:before{transform:scaleY(1)}
+a.row:active{transform:translateY(0) scale(.995)}
+.ic{font-size:22px;line-height:1;width:28px;text-align:center;flex-shrink:0}
+.row h3{margin:0;font-size:16px;font-weight:650;letter-spacing:-.012em}
+.row p{margin:4px 0 0;color:var(--dim);font-size:13.5px;line-height:1.45}
+.ar{margin-left:auto;color:#3E454F;font-size:20px;flex-shrink:0;transition:transform .18s,color .18s}
+a.row:hover .ar{transform:translateX(3px);color:var(--gold)}
+
+footer{margin-top:44px;padding-top:22px;border-top:1px solid var(--line);
+ color:var(--dim2);font-size:12.5px;line-height:1.7;text-align:center}
+footer a{color:var(--gold);text-decoration:none}
 </style>
 
 <div class="w">
 
 <header>
-  <div class="eyebrow">Boca Raton · Ohio</div>
-  <h1>I buy houses and trade watches.</h1>
-  <p class="tag">Everything has two prices — what someone will take, and what it's worth.
-  <b>I live in the difference.</b></p>
+  <div class="mark r"><span class="dot"></span><span>Boca Raton · Ohio</span></div>
+  <h1 class="r r2">Everything has two prices.<br>I live in <em>the gap.</em></h1>
+  <p class="tag r r3">What someone will take, and what it's actually worth.
+  <b>The difference is the whole business.</b></p>
 </header>
 
-<div class="hero">
+<div class="gap r r3">
+  <span class="gaplbl">The only math that matters</span>
+  <div class="bar"><div class="paid"></div><div class="spread"></div></div>
+  <div class="barlbl"><b class="a">← what you paid</b><b class="b">the gap →</b></div>
+</div>
+
+<div class="hero r r4">
+ <div class="hero-in">
   <span class="k">Most of you are asking the same thing</span>
   <h2>"How do I figure out what I'm actually good at?"</h2>
   <p>You can't build the right thing until you know how you're wired. The K-BAT is a
   32-question assessment that maps your real strengths, your values, and how you make
   decisions — then we go through it together, one on one.</p>
-  <p><b style="color:var(--txt)">Two years of guessing costs more than finding out.</b></p>
+  <p><b>Two years of guessing costs more than finding out.</b></p>
   <a class="cta" href="sms:+15612138289&body=I%20want%20to%20take%20the%20K-BAT">Text me — start here</a>
   <div class="micro">Goes straight to my phone. I read every one.</div>
+ </div>
 </div>
 
-<div class="or">or if you're here for the other stuff</div>
+<div class="or r r5">or if you're here for the other stuff</div>
 
+<div class="r r5">
 <a class="row" href="learn.html">
   <span class="ic">📘</span>
   <div><h3>How to start with nothing</h3>
-  <p>Finding houses nobody's looking at, and buying a business with none of your own money. Free, no email required.</p></div>
+  <p>Finding houses nobody's looking at, and buying a business with none of your own money. Free — no email, no upsell.</p></div>
   <span class="ar">›</span>
 </a>
 
@@ -88,6 +151,7 @@ color:#666D75;font-size:12.5px;line-height:1.65;text-align:center}
   <p>Private dealer network. Pieces move between members before they hit the open market.</p></div>
   <span class="ar">›</span>
 </a>
+</div>
 
 <footer>
   Michael Kawa · Kawa Investments LLC · Boca Raton, FL<br><br>
