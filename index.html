@@ -1,185 +1,93 @@
-<title>Michael Kawa — The Gap</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Michael Kawa</title>
 <style>
-  :root{
-    --ink:#07090D;
-    --ink-2:#0D1117;
-    --ink-3:#111823;
-    --line:#1C2430;
-    --steel:#7E8794;
-    --chalk:#E8EBEF;
-    --brass:#C9A227;
-    --brass-dim:#8A7220;
-  }
-  *{box-sizing:border-box}
-  body{
-    margin:0;background:var(--ink);color:var(--chalk);
-    font:16px/1.55 system-ui,-apple-system,"Segoe UI",sans-serif;
-    -webkit-font-smoothing:antialiased;padding:0 20px 64px;
-  }
-  .wrap{max-width:540px;margin:0 auto}
-
-  /* instrument-panel label — the through-line to watch dials and market tickers */
-  .lbl{
-    font:600 11px/1 ui-monospace,SFMono-Regular,Menlo,monospace;
-    letter-spacing:.22em;text-transform:uppercase;color:var(--steel);
-  }
-
-  header{padding:52px 0 32px}
-  .eyebrow{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:24px}
-  .eyebrow .dot{color:var(--brass)}
-  h1{
-    margin:0;font-size:clamp(32px,8.6vw,46px);line-height:1.02;
-    letter-spacing:-.03em;font-weight:800;text-wrap:balance;
-  }
-  h1 em{font-style:normal;color:var(--brass)}
-  .sub{margin:18px 0 0;color:var(--steel);font-size:16.5px;max-width:40ch}
-
-  /* the gap, drawn — buy price vs value with the spread called out */
-  .gap{
-    margin:30px 0 0;background:var(--ink-2);border:1px solid var(--line);border-radius:4px;
-    padding:22px 20px 20px;
-  }
-  .bar{display:flex;align-items:flex-end;gap:0;height:74px;margin:16px 0 0}
-  .bar .seg{position:relative;height:100%;border-radius:2px}
-  .bar .paid{flex:0 0 46%;background:var(--ink-3);border:1px solid var(--line)}
-  .bar .spread{flex:1;background:linear-gradient(180deg,rgba(201,162,39,.22),rgba(201,162,39,.06));border:1px solid var(--brass-dim);border-left:none}
-  .barlbl{display:flex;justify-content:space-between;margin-top:9px}
-  .barlbl b{font:600 12px/1 ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.1em;text-transform:uppercase}
-  .barlbl .a{color:var(--steel)}
-  .barlbl .b{color:var(--brass)}
-  .gap p{margin:16px 0 0;font-size:15px;color:var(--steel);line-height:1.55}
-
-  section{margin-top:38px;border-top:1px solid var(--line);padding-top:26px}
-  h3{margin:12px 0 0;font-size:21px;letter-spacing:-.02em;font-weight:700}
-  .body{margin:12px 0 0;color:var(--steel);font-size:15.5px;line-height:1.6}
-  .body strong{color:var(--chalk);font-weight:600}
-
-  .tells{margin:20px 0 0;padding:0;list-style:none;display:flex;flex-direction:column;gap:1px}
-  .tells li{
-    background:var(--ink-2);border-left:2px solid var(--brass-dim);
-    padding:13px 16px;font-size:15px;line-height:1.5;color:var(--chalk);
-  }
-  .tells li span{color:var(--steel)}
-
-  .doors{display:flex;flex-direction:column;gap:14px;margin:22px 0 0}
-  a.door{
-    display:block;text-decoration:none;color:inherit;
-    background:var(--ink-2);border:1px solid var(--line);border-radius:4px;
-    padding:20px 20px 18px;position:relative;overflow:hidden;
-    transition:border-color .18s ease,transform .18s ease;
-  }
-  a.door:before{
-    content:"";position:absolute;left:0;top:0;bottom:0;width:2px;background:var(--brass);
-    transform:scaleY(0);transform-origin:top;transition:transform .22s ease;
-  }
-  a.door:hover,a.door:focus-visible{border-color:#2C3644;transform:translateY(-1px)}
-  a.door:hover:before,a.door:focus-visible:before{transform:scaleY(1)}
-  a.door:focus-visible{outline:2px solid var(--brass);outline-offset:3px}
-  .door h2{margin:9px 0 6px;font-size:22px;letter-spacing:-.02em;font-weight:700}
-  .door p{margin:0;color:var(--steel);font-size:14.5px;line-height:1.5}
-  .door .go{
-    margin-top:14px;display:inline-flex;align-items:center;gap:8px;
-    font:600 12px/1 ui-monospace,SFMono-Regular,Menlo,monospace;
-    letter-spacing:.14em;text-transform:uppercase;color:var(--brass);
-  }
-  .door .go span{transition:transform .18s ease}
-  a.door:hover .go span{transform:translateX(4px)}
-
-  footer{margin-top:40px;border-top:1px solid var(--line);padding-top:20px;color:var(--steel);font-size:13px;line-height:1.6}
-  footer a{color:var(--brass);text-decoration:none}
-  @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+:root{--ink:#08090C;--card:#101319;--line:#1E232C;--dim:#8A9199;--txt:#EDEFF2;--gold:#C9A227}
+*{box-sizing:border-box}
+body{margin:0;background:var(--ink);color:var(--txt);
+font:17px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+-webkit-font-smoothing:antialiased;padding:0 22px 56px}
+.w{max-width:520px;margin:0 auto}
+header{padding:46px 0 8px;text-align:center}
+.eyebrow{font:600 11px ui-monospace,Menlo,monospace;letter-spacing:.24em;
+text-transform:uppercase;color:var(--gold);margin-bottom:16px}
+h1{margin:0;font-size:clamp(29px,8.2vw,39px);line-height:1.08;letter-spacing:-.03em;font-weight:800}
+.tag{margin:14px 0 0;color:var(--dim);font-size:16px;line-height:1.5}
+.tag b{color:var(--txt);font-weight:600}
+.hero{margin:32px 0 0;background:linear-gradient(160deg,#141821,#0E1116);
+border:1px solid #262C37;border-radius:12px;padding:26px 22px 22px}
+.hero .k{font:600 11px ui-monospace,Menlo,monospace;letter-spacing:.2em;
+text-transform:uppercase;color:var(--gold)}
+.hero h2{margin:11px 0 0;font-size:25px;line-height:1.18;letter-spacing:-.02em;font-weight:750}
+.hero p{margin:12px 0 0;color:var(--dim);font-size:15.5px;line-height:1.55}
+a.cta{display:block;margin:20px 0 0;background:var(--gold);color:#0A0C10;
+text-align:center;text-decoration:none;font-weight:700;font-size:17px;
+padding:16px;border-radius:9px}
+a.cta:active{transform:scale(.985)}
+.micro{margin:11px 0 0;text-align:center;color:#666D75;font-size:12.5px}
+.or{display:flex;align-items:center;gap:14px;margin:34px 0 18px;
+color:#5A616A;font:600 10.5px ui-monospace,Menlo,monospace;letter-spacing:.2em;text-transform:uppercase}
+.or:before,.or:after{content:"";flex:1;height:1px;background:var(--line)}
+a.row{display:flex;align-items:center;gap:14px;text-decoration:none;color:inherit;
+background:var(--card);border:1px solid var(--line);border-radius:10px;
+padding:16px 17px;margin-bottom:10px}
+a.row:active{transform:scale(.99)}
+.row .ic{font-size:21px;line-height:1;flex-shrink:0;width:26px;text-align:center}
+.row h3{margin:0;font-size:16px;font-weight:650;letter-spacing:-.01em}
+.row p{margin:3px 0 0;color:var(--dim);font-size:13.5px;line-height:1.45}
+.row .ar{margin-left:auto;color:#4C535C;font-size:19px;flex-shrink:0}
+footer{margin-top:38px;padding-top:20px;border-top:1px solid var(--line);
+color:#666D75;font-size:12.5px;line-height:1.65;text-align:center}
 </style>
 
-<div class="wrap">
+<div class="w">
 
-  <header>
-    <div class="eyebrow">
-      <span class="lbl">Michael Kawa</span>
-      <span class="lbl dot">● Boca Raton / Ohio</span>
-    </div>
-    <h1>Every asset has two prices. I live in <em>the gap.</em></h1>
-    <p class="sub">Houses, watches, whatever has a real market and a lazy price. Buy under, exit at value, keep the difference. That's the entire business.</p>
-  </header>
+<header>
+  <div class="eyebrow">Boca Raton · Ohio</div>
+  <h1>I buy houses and trade watches.</h1>
+  <p class="tag">Everything has two prices — what someone will take, and what it's worth.
+  <b>I live in the difference.</b></p>
+</header>
 
-  <div class="gap">
-    <span class="lbl">The only math that matters</span>
-    <div class="bar">
-      <div class="seg paid"></div>
-      <div class="seg spread"></div>
-    </div>
-    <div class="barlbl">
-      <b class="a">← what you paid</b>
-      <b class="b">the gap →</b>
-    </div>
-    <p>Nobody pays you for effort. They pay you for the distance between what a thing cost you and what it's actually worth. Everything else is logistics.</p>
-  </div>
+<div class="hero">
+  <span class="k">Most of you are asking the same thing</span>
+  <h2>"How do I figure out what I'm actually good at?"</h2>
+  <p>You can't build the right thing until you know how you're wired. The K-BAT is a
+  32-question assessment that maps your real strengths, your values, and how you make
+  decisions — then we go through it together, one on one.</p>
+  <p><b style="color:var(--txt)">Two years of guessing costs more than finding out.</b></p>
+  <a class="cta" href="sms:+15612138289&body=I%20want%20to%20take%20the%20K-BAT">Text me — start here</a>
+  <div class="micro">Goes straight to my phone. I read every one.</div>
+</div>
 
-  <section>
-    <span class="lbl">Lesson one</span>
-    <h3>The discount isn't negotiation. It's a constraint.</h3>
-    <p class="body">A gap doesn't appear because you talked someone down. It appears because <strong>the seller has a problem that isn't price.</strong> They're out of state. They inherited it. It's a headache they've been avoiding for two years. They need money this month, not in ninety days.</p>
-    <p class="body">You aren't taking advantage of them — <strong>you're the only person offering to make it disappear tomorrow.</strong> That convenience is what you get paid for, and it's why the gap exists at all.</p>
-  </section>
+<div class="or">or if you're here for the other stuff</div>
 
-  <section>
-    <span class="lbl">Lesson two</span>
-    <h3>Same rule, different asset.</h3>
-    <p class="body">A watch owner who needs liquidity this week sells under market for exactly the same reason a landlord who's done being a landlord does. <strong>The category changes. The constraint doesn't.</strong> Once you see it, you see it everywhere — cars, equipment, inventory, houses, steel on a bracelet.</p>
-  </section>
+<a class="row" href="sms:+15612138289&body=I%20found%20a%20property%20-%20address%3A%20">
+  <span class="ic">📍</span>
+  <div><h3>Send me an address, get paid</h3>
+  <p>Vacant house, tall grass, someone who needs out. If I buy it, you get a finder's fee.</p></div>
+  <span class="ar">›</span>
+</a>
 
-  <section>
-    <span class="lbl">Lesson three</span>
-    <h3>Finding one is the hard part.</h3>
-    <p class="body">Not the money — there's always money for a real deal. Not the skill — the math is subtraction. <strong>The whole job is finding a constrained seller before anyone else does.</strong> That's why most people never do this: they wait for deals to be listed, and by the time something's listed the gap is gone.</p>
-    <p class="body">Which is the good news, because constraints are visible from the outside:</p>
-    <ul class="tells">
-      <li>Grass three feet high <span>— nobody's been there in months</span></li>
-      <li>Mail piled at the door <span>— owner isn't local</span></li>
-      <li>Boarded window, no permit <span>— they've stopped spending on it</span></li>
-      <li>"My aunt passed and left us a place" <span>— heirs almost never want the house</span></li>
-      <li>A dealer selling under market to make payroll <span>— same thing, smaller box</span></li>
-    </ul>
-    <p class="body">You don't need a course or capital to notice any of that. You need to be paying attention on a street somebody else isn't watching.</p>
-  </section>
+<a class="row" href="sms:+15612138289&body=I%20have%20a%20property%20to%20sell%20-%20address%3A%20">
+  <span class="ic">🔑</span>
+  <div><h3>Sell me your house</h3>
+  <p>Cash, as-is, your closing date. South Florida and northern Ohio.</p></div>
+  <span class="ar">›</span>
+</a>
 
-  <section>
-    <span class="lbl">So — pick one</span>
-    <div class="doors">
+<a class="row" href="https://thewatchcartel.com">
+  <span class="ic">⌚</span>
+  <div><h3>Watch Cartel</h3>
+  <p>Private dealer network. Pieces move between members before they hit the open market.</p></div>
+  <span class="ar">›</span>
+</a>
 
-      <a class="door" href="sms:+15612138289&body=I%20want%20to%20find%20out%20what%20I%27m%20actually%20good%20at%20-%20K-BAT">
-        <span class="lbl">01 — you don't know what you're good at yet</span>
-        <h2>Find out what you're built for</h2>
-        <p>A 32-question assessment that maps how you actually work — your real strengths, your values, how you decide. Built on 7 sciences, third-party validated. You get the report and a live one-on-one walkthrough of what it means for what you should build.</p>
-        <span class="go">Text me to start <span>→</span></span>
-      </a>
-
-      <a class="door" href="sms:+15612138289&body=I%20found%20one%20—%20address%3A%20">
-        <span class="lbl">02 — you found a gap</span>
-        <h2>Send it to me. I'll pay you.</h2>
-        <p>See a vacant house, tall grass, an owner who needs out? Send me the address and what you know. If I end up buying it, I pay you a finder's fee. That simple.</p>
-        <span class="go">Text me the address <span>→</span></span>
-      </a>
-
-      <a class="door" href="sms:+15612138289&body=I%20have%20a%20property%20to%20sell%20—%20address%3A%20">
-        <span class="lbl">03 — you are the seller</span>
-        <h2>I'll buy it as-is, cash</h2>
-        <p>Single family in Miami-Dade, Broward, Palm Beach, or northern Ohio. No repairs, no showings, no agent, no cleaning it out. You pick the closing date. If it fits what I buy, I move fast — subject to a walkthrough and clean title.</p>
-        <span class="go">Tell me about it <span>→</span></span>
-      </a>
-
-      <a class="door" href="https://thewatchcartel.com" target="_blank" rel="noopener">
-        <span class="lbl">04 — you trade watches</span>
-        <h2>Watch Cartel</h2>
-        <p>A private dealer network running the same play in a smaller box. Members move pieces to each other before anything reaches the open market. Application only.</p>
-        <span class="go">See the room <span>→</span></span>
-      </a>
-
-    </div>
-  </section>
-
-  <footer>
-    I read every message myself — <a href="sms:+15612138289">561-213-8289</a><br><br>
-    Michael Kawa · Kawa Investments LLC · Boca Raton, FL. Finder's fees are a flat amount per qualified lead on a property I actually purchase — never a commission or percentage of a sale. I'm a principal buyer purchasing for my own account, not a licensed broker or agent. Watch Cartel membership is a fee for access, not an investment. Nothing here is investment advice.
-  </footer>
+<footer>
+  Michael Kawa · Kawa Investments LLC · Boca Raton, FL<br><br>
+  Finder's fees are a flat amount on a property I actually buy — never a commission or
+  percentage of a sale. I'm a principal buyer purchasing for my own account, not a licensed
+  broker or agent. Watch Cartel membership is a fee for access, not an investment.
+  Nothing here is investment advice.
+</footer>
 
 </div>
